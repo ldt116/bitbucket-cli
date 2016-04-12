@@ -1,0 +1,17 @@
+Usage: bbcli --action <action> --file <file> --user <username> --pass <password>
+  --action <action>
+        Requested operation to perform. Valid actions are listed at the end.
+  --file <file>
+        The input data file.
+  --user <username>
+        Username of Bitbucket Account.
+  --pass <password>
+        Password of Bitbucket Account.
+
+Valid actions:
+  inviteToRepo - Invites a user to a repository
+        Required parameters:
+            repoId          A repository belonging to the account.
+            email           The email recipient.
+        Optional parameters:
+            permission      The permission the recipient is granted, such as: read, write, admin
