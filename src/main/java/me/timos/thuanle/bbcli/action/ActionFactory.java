@@ -8,11 +8,15 @@ public class ActionFactory {
         if (actionString == null) {
             return null;
         }
-        if (InviteToRepo.ACTION_STRING.equals(actionString)) {
-            return new InviteToRepo(config);
-        }
+
         if (CreateRepo.ACTION_STRING.equals(actionString)) {
             return new CreateRepo(config);
+        }
+        if (InviteRepoUser.ACTION_STRING.equals(actionString)) {
+            return new InviteRepoUser(config);
+        }
+        if (RemoveRepoUser.ACTION_STRING.equals(actionString)) {
+            return new RemoveRepoUser(config);
         }
 
         return null;

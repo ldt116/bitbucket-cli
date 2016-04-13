@@ -21,19 +21,24 @@ public class Main {
                     "        Password of Bitbucket account.\n" +
                     "\n" +
                     "Valid actions:\n" +
-                    "  createRepo - Create a new repository\n" +
+                    "  createRepo - Creates a new repository\n" +
                     "        Required parameters:\n" +
-                    "            repoId          A repository belonging to the account.\n" +
+                    "            repoId          Repository identifier.\n" +
                     "        Optional parameters:\n" +
                     "            scm             The SCM type for the new repo. Either \"git\" (default) or \"hg\"\".\n" +
                     "            isPrivate       Whether the repository should be private (\"true\", default) or public (\"false\") .\n" +
                     "\n" +
-                    "  inviteToRepo - Invites a user to a repository\n" +
+                    "  inviteRepoUser - Invites a user to a repository\n" +
                     "        Required parameters:\n" +
-                    "            repoId          A repository belonging to the account.\n" +
+                    "            repoId          Repository identifier.\n" +
                     "            email           The email recipient.\n" +
                     "        Optional parameters:\n" +
                     "            permission      The permission the recipient is granted. Either \"read\" (default), \"write\" or \"admin\".\n" +
+                    "\n" +
+                    "  removeRepoUser - Invites a user to a repository\n" +
+                    "        Required parameters:\n" +
+                    "            repoId          Repository identifier.\n" +
+                    "            email           The email associated with removed account.\n" +
                     "\n";
 
     public static final String PARAM_ACTION = "action";

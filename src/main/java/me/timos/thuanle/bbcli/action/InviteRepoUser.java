@@ -9,8 +9,8 @@ import okhttp3.Response;
 
 import java.io.IOException;
 
-public class InviteToRepo extends BaseBatchAction implements Action {
-    public static final String ACTION_STRING = "inviteToRepo";
+public class InviteRepoUser extends BaseBatchAction implements Action {
+    public static final String ACTION_STRING = "inviteRepoUser";
 
     public static final String FIELD_REPO_ID = "repoId";
     public static final String FIELD_EMAIL = "email";
@@ -22,7 +22,7 @@ public class InviteToRepo extends BaseBatchAction implements Action {
 
     private final String mCredential;
 
-    public InviteToRepo(Configuration config) {
+    public InviteRepoUser(Configuration config) {
         super(config);
         mCredential = Credentials.basic(config.getUser(), config.getPass());
     }

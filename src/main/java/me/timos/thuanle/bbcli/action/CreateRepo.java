@@ -16,6 +16,7 @@ public class CreateRepo extends BaseBatchAction implements Action {
     public static final String FIELD_IS_PRIVATE = "isPrivate";
 
     public static final String SCM_GIT = "git";
+    public static final String SCM_HG = "git";
 
     public static final String IS_PRIVATE_FALSE = "false";
     public static final String IS_PRIVATE_TRUE = "true";
