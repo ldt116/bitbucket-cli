@@ -13,13 +13,13 @@ Valid actions:
         Required parameters:
             repoId          A repository belonging to the account.
         Optional parameters:
-            scm             The SCM type for the new repo. Either "hg" or "git" (default).
-            isPrivate       Whether the repository should be public (false) or private (true, default).
+            scm             The SCM type for the new repo. Either "git" (default) or "hg"".
+            isPrivate       Whether the repository should be private ("true", default) or public ("false") .
 
   inviteToRepo - Invites a user to a repository
         Required parameters:
             repoId          A repository belonging to the account.
             email           The email recipient.
         Optional parameters:
-            permission      The permission the recipient is granted, such as: read (default), write, admin.
+            permission      The permission the recipient is granted. Either "read" (default), "write" or "admin".
 

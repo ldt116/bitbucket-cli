@@ -12,28 +12,28 @@ public class Main {
     public static final String USAGE_STRING =
             "Usage: bbcli --action <action> --file <file> --user <username> --pass <password>\n" +
                     "  --action <action>\n" +
-                    "        Requested operation to perform. Valid actions are listed at the end.\n" +
+                    "        Requested operation to be performed. Valid actions are listed at the end of this document.\n" +
                     "  --file <file>\n" +
                     "        The input data file.\n" +
                     "  --user <username>\n" +
-                    "        Username of Bitbucket Account.\n" +
+                    "        Username of Bitbucket account.\n" +
                     "  --pass <password>\n" +
-                    "        Password of Bitbucket Account.\n" +
+                    "        Password of Bitbucket account.\n" +
                     "\n" +
                     "Valid actions:\n" +
                     "  createRepo - Create a new repository\n" +
                     "        Required parameters:\n" +
                     "            repoId          A repository belonging to the account.\n" +
                     "        Optional parameters:\n" +
-                    "            scm             The SCM type for the new repo. Either \"hg\" or \"git\" (default).\n" +
-                    "            isPrivate       Whether the repository should be public (false) or private (true, default).\n" +
+                    "            scm             The SCM type for the new repo. Either \"git\" (default) or \"hg\"\".\n" +
+                    "            isPrivate       Whether the repository should be private (\"true\", default) or public (\"false\") .\n" +
                     "\n" +
                     "  inviteToRepo - Invites a user to a repository\n" +
                     "        Required parameters:\n" +
                     "            repoId          A repository belonging to the account.\n" +
                     "            email           The email recipient.\n" +
                     "        Optional parameters:\n" +
-                    "            permission      The permission the recipient is granted, such as: read (default), write, admin.\n" +
+                    "            permission      The permission the recipient is granted. Either \"read\" (default), \"write\" or \"admin\".\n" +
                     "\n";
 
     public static final String PARAM_ACTION = "action";
