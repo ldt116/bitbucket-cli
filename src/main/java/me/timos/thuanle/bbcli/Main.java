@@ -8,9 +8,6 @@ import me.timos.thuanle.bbcli.action.ActionFactory;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by thuanle on 4/11/16.
- */
 public class Main {
     public static final String USAGE_STRING =
             "Usage: bbcli --action <action> --file <file> --user <username> --pass <password>\n" +
@@ -24,12 +21,20 @@ public class Main {
                     "        Password of Bitbucket Account.\n" +
                     "\n" +
                     "Valid actions:\n" +
+                    "  createRepo - Create a new repository\n" +
+                    "        Required parameters:\n" +
+                    "            repoId          A repository belonging to the account.\n" +
+                    "        Optional parameters:\n" +
+                    "            scm             The SCM type for the new repo. Either \"hg\" or \"git\" (default).\n" +
+                    "            isPrivate       Whether the repository should be public (false) or private (true, default).\n" +
+                    "\n" +
                     "  inviteToRepo - Invites a user to a repository\n" +
                     "        Required parameters:\n" +
                     "            repoId          A repository belonging to the account.\n" +
                     "            email           The email recipient.\n" +
                     "        Optional parameters:\n" +
-                    "            permission      The permission the recipient is granted, such as: read, write, admin";
+                    "            permission      The permission the recipient is granted, such as: read (default), write, admin.\n" +
+                    "\n";
 
     public static final String PARAM_ACTION = "action";
     public static final String PARAM_FILE = "file";

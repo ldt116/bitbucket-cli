@@ -4,14 +4,11 @@ import me.timos.thuanle.bbcli.Configuration;
 
 import java.io.IOException;
 
-/**
- * Created by thuanle on 4/12/16.
- */
-public abstract class BaseAction {
+public abstract class BaseBatchAction {
     private Configuration mConfig;
 
-    public BaseAction(Configuration inputs) {
-        mConfig = inputs;
+    public BaseBatchAction(Configuration config) {
+        mConfig = config;
     }
 
     public Configuration getConfig() {

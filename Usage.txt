@@ -9,9 +9,17 @@ Usage: bbcli --action <action> --file <file> --user <username> --pass <password>
         Password of Bitbucket Account.
 
 Valid actions:
+  createRepo - Create a new repository
+        Required parameters:
+            repoId          A repository belonging to the account.
+        Optional parameters:
+            scm             The SCM type for the new repo. Either "hg" or "git" (default).
+            isPrivate       Whether the repository should be public (false) or private (true, default).
+
   inviteToRepo - Invites a user to a repository
         Required parameters:
             repoId          A repository belonging to the account.
             email           The email recipient.
         Optional parameters:
-            permission      The permission the recipient is granted, such as: read, write, admin
+            permission      The permission the recipient is granted, such as: read (default), write, admin.
+

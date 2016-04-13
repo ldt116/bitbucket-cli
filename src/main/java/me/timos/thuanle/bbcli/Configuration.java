@@ -11,9 +11,6 @@ import java.io.Reader;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by thuanle on 4/12/16.
- */
 public class Configuration {
     private final List<CSVRecord> mRecords;
     private final Map<String, Integer> mHeaderMap;
@@ -42,8 +39,16 @@ public class Configuration {
         return mPass;
     }
 
-    public String getRecordField(int index, String name) {
-        return mRecords.get(index).get(name);
+    public String getRecordField(int recordIndex, String fieldName) {
+        return mRecords.get(recordIndex).get(fieldName);
+    }
+
+    public String getRecordField(int recordIndex, String fieldName, String defaultValue) {
+        if (hasField(fieldName)){
+            return getRecordField(recordIndex, fieldName);
+        } else {
+            return defaultValue;
+        }
     }
 
     public String getUser() {
