@@ -1,12 +1,12 @@
 Usage: bbcli --action <action> --file <file> --user <username> --pass <password>
   --action <action>
-        Requested operation to perform. Valid actions are listed at the end.
+        Requested operation to be performed. Valid actions are listed at the end of this document.
   --file <file>
         The input data file.
   --user <username>
-        Username of Bitbucket Account.
+        Username of Bitbucket account.
   --pass <password>
-        Password of Bitbucket Account.
+        Password of Bitbucket account.
 
 Valid actions:
   createRepo - Create a new repository
