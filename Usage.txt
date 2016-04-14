@@ -23,7 +23,7 @@ Valid actions:
         Optional parameters:
             permission      The permission the recipient is granted. Either "read" (default), "write" or "admin".
 
-  removeRepoUser - Invites a user to a repository
+  removeRepoUser - Removes a user from a repository
         Required parameters:
             repoId          Repository identifier.
             email           The email associated with removed account.
