@@ -35,7 +35,7 @@ public class Main {
                     "        Optional parameters:\n" +
                     "            permission      The permission the recipient is granted. Either \"read\" (default), \"write\" or \"admin\".\n" +
                     "\n" +
-                    "  removeRepoUser - Invites a user to a repository\n" +
+                    "  removeRepoUser - Removes a user from a repository\n" +
                     "        Required parameters:\n" +
                     "            repoId          Repository identifier.\n" +
                     "            email           The email associated with removed account.\n" +
