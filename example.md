@@ -4,7 +4,7 @@
 
 Input file as `createRepo.csv`
 ```
-repoId, scm,  isPrivate
+repoId, scm, isPrivate
 abc, git, true
 def, hg, false
 ```

@@ -2,7 +2,7 @@ Usage: bbcli --action <action> --file <file> --user <username> --pass <password>
   --action <action>
         Requested operation to be performed. Valid actions are listed at the end of this document.
   --file <file>
-        The input data file.
+        The input data file in csv format.
   --user <username>
         Username of Bitbucket account.
   --pass <password>

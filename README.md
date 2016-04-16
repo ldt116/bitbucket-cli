@@ -7,9 +7,9 @@ This project gives you a Command Line Interface (CLI) for remotely access [Bitbu
 ```
 Usage: bbcli --action <action> --file <file> --user <username> --pass <password>
   --action <action>
-        Requested operation to be performed. Valid actions are listed at the end of this document.
+        Requested operation to be performed.
   --file <file>
-        The input data file.
+        The input data file in csv format.
   --user <username>
         Username of Bitbucket account.
   --pass <password>
@@ -17,6 +17,18 @@ Usage: bbcli --action <action> --file <file> --user <username> --pass <password>
 ```
 
 You can find the full action document in [usage](Usage.txt) document. There are some examples [here](example.md).
+
+### Input format
+
+The input of the action is described in `csv` format. The first line must be the header. For example, the following file includes 1 header row and  2 data rows; there are 3 columns names `repoId`, `scm`, `isPrivate`.
+
+```
+repoId, scm, isPrivate
+abc, git, true
+def, hg, false
+```
+
+Note that the columns orders are not important, as long as you provided all necessary parameters for that action.
 
 ## License
 
