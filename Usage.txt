@@ -28,3 +28,8 @@ Valid actions:
             repoId          Repository identifier.
             email           The email associated with removed account.
 
+  updateRepoUserPermission - Update a user permission in a repository
+        Required parameters:
+            repoId          Repository identifier.
+            email           The email recipient.
+            permission      The new permission the recipient is granted. Either "read", "write" or "admin".

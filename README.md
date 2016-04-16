@@ -4,7 +4,7 @@ This project gives you a Command Line Interface (CLI) for remotely access [Bitbu
 
 ## Usage
 
-You can find the [usage](Usage.txt) document.
+You can find the full action document in [usage](Usage.txt) document. There are some examples [here](example.md).
 
 ## License
 

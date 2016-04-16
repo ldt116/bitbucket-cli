@@ -18,6 +18,9 @@ public class ActionFactory {
         if (RemoveRepoUser.ACTION_STRING.equals(actionString)) {
             return new RemoveRepoUser(config);
         }
+        if (UpdateRepoUserPermission.ACTION_STRING.equals(actionString)){
+            return new UpdateRepoUserPermission(config);
+        }
 
         return null;
     }

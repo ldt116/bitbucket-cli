@@ -1,14 +1,17 @@
 package me.timos.thuanle.bbcli.action;
 
 import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
 /**
- * <p>This is the Connector for Bitbucket</p>
+ * <p>This is the Connector for Bitbucket.</p>
  *
- * <p>@see <a href="https://confluence.atlassian.com/bitbucket/version-1-423626337.html">
- *     Bitbucket Cloud REST APIs v1</a></p>
+ * @see <a href="https://confluence.atlassian.com/bitbucket/version-1-423626337.html">
+ * Bitbucket Cloud REST APIs v1</a>
+ * @see <a href="https://confluence.atlassian.com/bitbucket/version-2-423626329.html">
+ * Bitbucket Cloud REST APIs v2</a>
  */
 public class ApiRequestCreator {
     private static final String BITBUCKET_API_1_BASE = "https://api.bitbucket.org/1.0/";
@@ -20,20 +23,29 @@ public class ApiRequestCreator {
 
     private static final String HEADER_AUTHORIZATION = "Authorization";
     private static final String SPLASH = "/";
+    private static final MediaType MEDIA_TYPE_TEXT_PLAIN = MediaType.parse("text/plain");
 
-    private static Request buildDelete(String credential, String url) {
+    private static Request.Builder buildCommon(String credential, String url) {
         return new Request.Builder()
                 .url(url)
-                .header(HEADER_AUTHORIZATION, credential)
+                .header(HEADER_AUTHORIZATION, credential);
+    }
+
+    private static Request buildDelete(String credential, String url) {
+        return buildCommon(credential, url)
                 .delete()
                 .build();
     }
 
     private static Request buildPost(String credential, String url, RequestBody body) {
-        return new Request.Builder()
-                .url(url)
-                .header(HEADER_AUTHORIZATION, credential)
+        return buildCommon(credential, url)
                 .post(body)
+                .build();
+    }
+
+    private static Request buildPut(String credential, String url, RequestBody body) {
+        return buildCommon(credential, url)
+                .put(body)
                 .build();
     }
 
@@ -65,4 +77,10 @@ public class ApiRequestCreator {
         return buildDelete(credential, url);
     }
 
+    public static Request requestUpdateUserPermissionInRepository(String authorLogin, String credential, String repoSlug, String updateEmail, String permission) {
+        String url = BITBUCKET_API_1_BASE_PRIVILEGES + authorLogin + SPLASH + repoSlug + SPLASH + updateEmail;
+
+        RequestBody body = RequestBody.create(MEDIA_TYPE_TEXT_PLAIN, permission);
+        return buildPut(credential, url, body);
+    }
 }

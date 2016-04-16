@@ -39,7 +39,12 @@ public class Main {
                     "        Required parameters:\n" +
                     "            repoId          Repository identifier.\n" +
                     "            email           The email associated with removed account.\n" +
-                    "\n";
+                    "\n" +
+                    "  updateRepoUserPermission - Update a user permission in a repository\n" +
+                    "        Required parameters:\n" +
+                    "            repoId          Repository identifier.\n" +
+                    "            email           The email recipient.\n" +
+                    "            permission      The new permission the recipient is granted. Either \"read\", \"write\" or \"admin\".\n";
 
     public static final String PARAM_ACTION = "action";
     public static final String PARAM_FILE = "file";
