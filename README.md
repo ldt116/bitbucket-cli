@@ -4,6 +4,18 @@ This project gives you a Command Line Interface (CLI) for remotely access [Bitbu
 
 ## Usage
 
+```
+Usage: bbcli --action <action> --file <file> --user <username> --pass <password>
+  --action <action>
+        Requested operation to be performed. Valid actions are listed at the end of this document.
+  --file <file>
+        The input data file.
+  --user <username>
+        Username of Bitbucket account.
+  --pass <password>
+        Password of Bitbucket account.
+```
+
 You can find the full action document in [usage](Usage.txt) document. There are some examples [here](example.md).
 
 ## License
