@@ -7,6 +7,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class CreateRepo extends BaseBatchAction implements Action {
     public static final String ACTION_STRING = "createRepo";
@@ -20,7 +21,6 @@ public class CreateRepo extends BaseBatchAction implements Action {
 
     public static final String IS_PRIVATE_FALSE = "false";
     public static final String IS_PRIVATE_TRUE = "true";
-
     private final String mCredential;
 
     public CreateRepo(Configuration config) {
@@ -29,17 +29,12 @@ public class CreateRepo extends BaseBatchAction implements Action {
     }
 
     @Override
-    protected void performSingleAction(int recordIndex) throws IOException {
-        Configuration config = getConfig();
+    protected void performSingleAction(Map<String, String> params) throws IOException {
+        String user = getConfig().getUser();
+        String repoId = params.get(FIELD_REPO_ID);
+        String scm = params.getOrDefault(FIELD_SCM, SCM_GIT);
+        String isPrivate = params.getOrDefault(FIELD_IS_PRIVATE, IS_PRIVATE_TRUE);
 
-        String repoId = config.getRecordField(recordIndex, FIELD_REPO_ID);
-        String scm = config.getRecordField(recordIndex, FIELD_SCM, SCM_GIT);
-        String isPrivate = config.getRecordField(recordIndex, FIELD_IS_PRIVATE, IS_PRIVATE_TRUE);
-
-        performCreateRepo(config.getUser(), repoId, scm, isPrivate);
-    }
-
-    private void performCreateRepo(String user, String repoId, String scm, String isPrivate) throws IOException {
         System.out.format("%s: {repo: %s, scm: %s, isPrivate: %s}\n", ACTION_STRING, repoId, scm, isPrivate);
 
         OkHttpClient client = new OkHttpClient();

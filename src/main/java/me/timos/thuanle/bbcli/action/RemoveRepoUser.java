@@ -8,6 +8,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class RemoveRepoUser extends BaseBatchAction implements Action {
     public static final String ACTION_STRING = "removeRepoUser";
@@ -23,16 +24,11 @@ public class RemoveRepoUser extends BaseBatchAction implements Action {
     }
 
     @Override
-    protected void performSingleAction(int recordIndex) throws IOException {
-        Configuration config = getConfig();
+    protected void performSingleAction(Map<String, String> params) throws IOException {
+        String user = getConfig().getUser();
+        String repoId = params.get(FIELD_REPO_ID);
+        String email = params.get(FIELD_EMAIL);
 
-        String repoId = config.getRecordField(recordIndex, FIELD_REPO_ID);
-        String email = config.getRecordField(recordIndex, FIELD_EMAIL);
-
-        performRemove(config.getUser(), repoId, email);
-    }
-
-    private void performRemove(String user, String repoId, String email) throws IOException {
         System.out.format("%s: {repo: %s, email: %s}\n", ACTION_STRING, repoId, email);
 
         OkHttpClient client = new OkHttpClient();

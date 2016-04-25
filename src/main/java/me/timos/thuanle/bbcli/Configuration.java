@@ -39,23 +39,11 @@ public class Configuration {
         return mPass;
     }
 
-    public String getRecordField(int recordIndex, String fieldName) {
-        return mRecords.get(recordIndex).get(fieldName);
-    }
-
-    public String getRecordField(int recordIndex, String fieldName, String defaultValue) {
-        if (hasField(fieldName)){
-            return getRecordField(recordIndex, fieldName);
-        } else {
-            return defaultValue;
-        }
+    public Map<String, String> getRecord(int index) {
+        return mRecords.get(index).toMap();
     }
 
     public String getUser() {
         return mUser;
-    }
-
-    public boolean hasField(String fieldName) {
-        return mHeaderMap.containsKey(fieldName);
     }
 }
