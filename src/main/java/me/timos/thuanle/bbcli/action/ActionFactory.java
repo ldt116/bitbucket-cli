@@ -5,23 +5,16 @@ import me.timos.thuanle.bbcli.Configuration;
 
 public class ActionFactory {
     public static Action createAction(String actionString, Configuration config) {
-        if (actionString == null) {
-            return null;
+        switch (actionString) {
+            case CreateRepo.ACTION_STRING:
+                return new CreateRepo(config);
+            case InviteRepoUser.ACTION_STRING:
+                return new InviteRepoUser(config);
+            case RemoveRepoUser.ACTION_STRING:
+                return new RemoveRepoUser(config);
+            case UpdateRepoUserPermission.ACTION_STRING:
+                return new UpdateRepoUserPermission(config);
         }
-
-        if (CreateRepo.ACTION_STRING.equals(actionString)) {
-            return new CreateRepo(config);
-        }
-        if (InviteRepoUser.ACTION_STRING.equals(actionString)) {
-            return new InviteRepoUser(config);
-        }
-        if (RemoveRepoUser.ACTION_STRING.equals(actionString)) {
-            return new RemoveRepoUser(config);
-        }
-        if (UpdateRepoUserPermission.ACTION_STRING.equals(actionString)){
-            return new UpdateRepoUserPermission(config);
-        }
-
         return null;
     }
 }

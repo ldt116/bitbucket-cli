@@ -13,7 +13,6 @@ import java.util.Map;
 
 public class Configuration {
     private final List<CSVRecord> mRecords;
-    private final Map<String, Integer> mHeaderMap;
     private String mUser;
     private String mPass;
 
@@ -27,7 +26,6 @@ public class Configuration {
                 .withIgnoreSurroundingSpaces()
                 .withHeader()
                 .parse(in);
-        mHeaderMap = csvParser.getHeaderMap();
         mRecords = csvParser.getRecords();
     }
 
