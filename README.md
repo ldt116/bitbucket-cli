@@ -2,6 +2,8 @@
 
 This project gives you a Command Line Interface (CLI) for remotely access [Bitbucket](http://bitbucket.org). This provides an automatically method for adminstrating Bitbucket repository.
 
+[![Build Status](https://travis-ci.org/ldt116/bitbucket-cli.svg?branch=master)](https://travis-ci.org/ldt116/bitbucket-cli)
+
 ## Usage
 
 ```
