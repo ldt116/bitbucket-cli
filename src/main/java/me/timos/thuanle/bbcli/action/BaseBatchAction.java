@@ -1,11 +1,12 @@
 package me.timos.thuanle.bbcli.action;
 
+import me.timos.thuanle.bbcli.Action;
 import me.timos.thuanle.bbcli.Configuration;
 
 import java.io.IOException;
 import java.util.Map;
 
-public abstract class BaseBatchAction {
+public abstract class BaseBatchAction implements Action {
     private Configuration mConfig;
 
     public BaseBatchAction(Configuration config) {
@@ -16,6 +17,7 @@ public abstract class BaseBatchAction {
         return mConfig;
     }
 
+    @Override
     public void perform() throws IOException {
         int size = getConfig().countRecords();
         for (int i = 0; i < size; i++) {
