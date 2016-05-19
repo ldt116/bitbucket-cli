@@ -16,11 +16,8 @@ public class RemoveRepoUser extends BaseBatchAction implements Action {
     public static final String FIELD_REPO_ID = "repoId";
     public static final String FIELD_EMAIL = "email";
 
-    private final String mCredential;
-
     public RemoveRepoUser(Configuration config) {
         super(config);
-        mCredential = Credentials.basic(config.getUser(), config.getPass());
     }
 
     @Override

@@ -21,11 +21,8 @@ public class InviteRepoUser extends BaseBatchAction implements Action {
     public static final String PERMISSION_WRITE = "write";
     public static final String PERMISSION_ADMIN = "admin";
 
-    private final String mCredential;
-
     public InviteRepoUser(Configuration config) {
         super(config);
-        mCredential = Credentials.basic(config.getUser(), config.getPass());
     }
 
     @Override

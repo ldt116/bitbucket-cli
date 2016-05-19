@@ -17,11 +17,9 @@ public class UpdateRepoUserPermission extends BaseBatchAction implements Action 
     public static final String FIELD_EMAIL = "email";
     public static final String FIELD_PERMISSION = "permission";
 
-    private final String mCredential;
 
     public UpdateRepoUserPermission(Configuration config) {
         super(config);
-        mCredential = Credentials.basic(config.getUser(), config.getPass());
     }
 
 

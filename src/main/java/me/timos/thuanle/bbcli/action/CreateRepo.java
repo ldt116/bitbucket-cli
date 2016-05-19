@@ -21,11 +21,9 @@ public class CreateRepo extends BaseBatchAction implements Action {
 
     public static final String IS_PRIVATE_FALSE = "false";
     public static final String IS_PRIVATE_TRUE = "true";
-    private final String mCredential;
 
     public CreateRepo(Configuration config) {
         super(config);
-        mCredential = Credentials.basic(config.getUser(), config.getPass());
     }
 
     @Override
