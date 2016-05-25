@@ -15,6 +15,7 @@ Valid actions:
         Optional parameters:
             scm             The SCM type for the new repo. Either "git" (default) or "hg"".
             isPrivate       Whether the repository should be private ("true", default) or public ("false") .
+            org             The organization holds the repo.
 
   inviteRepoUser - Invites a user to a repository
         Required parameters:
@@ -22,14 +23,19 @@ Valid actions:
             email           The email recipient.
         Optional parameters:
             permission      The permission the recipient is granted. Either "read" (default), "write" or "admin".
+            org             The organization holds the repo.
 
   removeRepoUser - Removes a user from a repository
         Required parameters:
             repoId          Repository identifier.
             email           The email associated with removed account.
+        Optional parameters:
+            org             The organization holds the repo.
 
   updateRepoUserPermission - Update a user permission in a repository
         Required parameters:
             repoId          Repository identifier.
             email           The email recipient.
             permission      The new permission the recipient is granted. Either "read", "write" or "admin".
+        Optional parameters:
+            org             The organization holds the repo.

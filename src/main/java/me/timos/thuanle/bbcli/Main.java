@@ -14,7 +14,7 @@ public class Main {
                     "  --action <action>\n" +
                     "        Requested operation to be performed. Valid actions are listed at the end of this document.\n" +
                     "  --file <file>\n" +
-                    "        The input data file.\n" +
+                    "        The input data file in csv format.\n" +
                     "  --user <username>\n" +
                     "        Username of Bitbucket account.\n" +
                     "  --pass <password>\n" +
@@ -27,6 +27,7 @@ public class Main {
                     "        Optional parameters:\n" +
                     "            scm             The SCM type for the new repo. Either \"git\" (default) or \"hg\"\".\n" +
                     "            isPrivate       Whether the repository should be private (\"true\", default) or public (\"false\") .\n" +
+                    "            org             The organization holds the repo.\n" +
                     "\n" +
                     "  inviteRepoUser - Invites a user to a repository\n" +
                     "        Required parameters:\n" +
@@ -34,17 +35,22 @@ public class Main {
                     "            email           The email recipient.\n" +
                     "        Optional parameters:\n" +
                     "            permission      The permission the recipient is granted. Either \"read\" (default), \"write\" or \"admin\".\n" +
+                    "            org             The organization holds the repo.\n" +
                     "\n" +
                     "  removeRepoUser - Removes a user from a repository\n" +
                     "        Required parameters:\n" +
                     "            repoId          Repository identifier.\n" +
                     "            email           The email associated with removed account.\n" +
+                    "        Optional parameters:\n" +
+                    "            org             The organization holds the repo.\n" +
                     "\n" +
                     "  updateRepoUserPermission - Update a user permission in a repository\n" +
                     "        Required parameters:\n" +
                     "            repoId          Repository identifier.\n" +
                     "            email           The email recipient.\n" +
-                    "            permission      The new permission the recipient is granted. Either \"read\", \"write\" or \"admin\".\n";
+                    "            permission      The new permission the recipient is granted. Either \"read\", \"write\" or \"admin\".\n" +
+                    "        Optional parameters:\n" +
+                    "            org             The organization holds the repo.\n";
 
     public static final String PARAM_ACTION = "action";
     public static final String PARAM_FILE = "file";
@@ -95,12 +101,12 @@ public class Main {
         main.run();
     }
 
+    private static void showArgsUsage() {
+        System.out.println(USAGE_STRING);
+    }
+
     private void run() throws IOException {
         Action action = ActionFactory.createAction(mActionString, mConfig);
         action.perform();
-    }
-
-    private static void showArgsUsage() {
-        System.out.println(USAGE_STRING);
     }
 }

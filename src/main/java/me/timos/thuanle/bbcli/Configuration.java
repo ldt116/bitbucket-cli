@@ -13,8 +13,8 @@ import java.util.Map;
 
 public class Configuration {
     private final List<CSVRecord> mRecords;
-    private String mUser;
-    private String mPass;
+    private final String mUser;
+    private final String mPass;
 
     public Configuration(String user, String pass, File inputFile) throws IOException {
         mUser = user;

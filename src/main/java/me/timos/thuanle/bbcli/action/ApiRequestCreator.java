@@ -49,7 +49,7 @@ public class ApiRequestCreator {
                 .build();
     }
 
-    public static Request requestCreateRepository(String userLogin, String credential, String repoSlug, String scm, String isPrivate) {
+    static Request requestCreateRepository(String userLogin, String credential, String repoSlug, String scm, String isPrivate) {
         String url = BITBUCKET_API_2_BASE_REPOSITORIES + userLogin + SPLASH + repoSlug;
 
         RequestBody body = new FormBody.Builder()
@@ -61,7 +61,7 @@ public class ApiRequestCreator {
         return buildPost(credential, url, body);
     }
 
-    public static Request requestInvitationUserToRepository(String authorLogin, String credential, String repoSlug, String invitationEmail, String permission) {
+    static Request requestInvitationUserToRepository(String authorLogin, String credential, String repoSlug, String invitationEmail, String permission) {
         String url = BITBUCKET_API_1_BASE_INVITATIONS + authorLogin + SPLASH + repoSlug + SPLASH + invitationEmail;
 
         RequestBody body = new FormBody.Builder()
@@ -71,13 +71,13 @@ public class ApiRequestCreator {
         return buildPost(credential, url, body);
     }
 
-    public static Request requestRemoveUserFromRepository(String authorLogin, String credential, String repoSlug, String privilegeAccount) {
+    static Request requestRemoveUserFromRepository(String authorLogin, String credential, String repoSlug, String privilegeAccount) {
         String url = BITBUCKET_API_1_BASE_PRIVILEGES + authorLogin + SPLASH + repoSlug + SPLASH + privilegeAccount;
 
         return buildDelete(credential, url);
     }
 
-    public static Request requestUpdateUserPermissionInRepository(String authorLogin, String credential, String repoSlug, String updateEmail, String permission) {
+    static Request requestUpdateUserPermissionInRepository(String authorLogin, String credential, String repoSlug, String updateEmail, String permission) {
         String url = BITBUCKET_API_1_BASE_PRIVILEGES + authorLogin + SPLASH + repoSlug + SPLASH + updateEmail;
 
         RequestBody body = RequestBody.create(MEDIA_TYPE_TEXT_PLAIN, permission);
