@@ -9,27 +9,22 @@ import okhttp3.Response;
 import java.io.IOException;
 import java.util.Map;
 
-public class UpdateRepoUserPermission extends BaseBatchOrgAction implements Action {
+public class UpdateRepoUserPermission extends BaseBatchAction implements Action {
     public static final String ACTION_STRING = "updateRepoUserPermission";
-
-    public static final String FIELD_REPO_ID = "repoId";
-    public static final String FIELD_EMAIL = "email";
-    public static final String FIELD_PERMISSION = "permission";
-
 
     public UpdateRepoUserPermission(Configuration config) {
         super(config);
     }
 
-
     @Override
     protected void performSingleAction(Map<String, String> params) throws IOException {
-        String author = getAuthor(params);
-        String repoId = params.get(FIELD_REPO_ID);
-        String email = params.get(FIELD_EMAIL);
-        String permission = params.get(FIELD_PERMISSION);
+        String author = ParamActionHelper.getAuthor(getConfig(), params);
+        String repoId = ParamActionHelper.getRepo(params);
+        String email = ParamActionHelper.getEmail(params);
+        String permission = ParamActionHelper.getPermission(params);
 
-        System.out.format("%s: {repo: %s, email: %s, permission: %s}\n", ACTION_STRING, repoId, email, permission);
+        System.out.format("%s: {repo: %s, email: %s, permission: %s}\n",
+                ACTION_STRING, repoId, email, permission);
 
         OkHttpClient client = new OkHttpClient();
         Request request = ApiRequestCreator.requestUpdateUserPermissionInRepository(author, mCredential, repoId, email, permission);

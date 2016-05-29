@@ -9,11 +9,8 @@ import okhttp3.Response;
 import java.io.IOException;
 import java.util.Map;
 
-public class RemoveRepoUser extends BaseBatchOrgAction implements Action {
+public class RemoveRepoUser extends BaseBatchAction implements Action {
     public static final String ACTION_STRING = "removeRepoUser";
-
-    public static final String FIELD_REPO_ID = "repoId";
-    public static final String FIELD_EMAIL = "email";
 
     public RemoveRepoUser(Configuration config) {
         super(config);
@@ -21,11 +18,12 @@ public class RemoveRepoUser extends BaseBatchOrgAction implements Action {
 
     @Override
     protected void performSingleAction(Map<String, String> params) throws IOException {
-        String author = getAuthor(params);
-        String repoId = params.get(FIELD_REPO_ID);
-        String email = params.get(FIELD_EMAIL);
+        String author = ParamActionHelper.getAuthor(getConfig(), params);
+        String repoId = ParamActionHelper.getRepo(params);
+        String email = ParamActionHelper.getEmail(params);
 
-        System.out.format("%s: {repo: %s, email: %s}\n", ACTION_STRING, repoId, email);
+        System.out.format("%s: {repo: %s, email: %s}\n",
+                ACTION_STRING, repoId, email);
 
         OkHttpClient client = new OkHttpClient();
         Request request = ApiRequestCreator.requestRemoveUserFromRepository(author, mCredential, repoId, email);

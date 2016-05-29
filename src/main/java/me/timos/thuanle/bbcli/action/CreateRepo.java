@@ -9,15 +9,14 @@ import okhttp3.Response;
 import java.io.IOException;
 import java.util.Map;
 
-public class CreateRepo extends BaseBatchOrgAction implements Action {
+public class CreateRepo extends BaseBatchAction implements Action {
     public static final String ACTION_STRING = "createRepo";
 
-    public static final String FIELD_REPO_ID = "repoId";
     public static final String FIELD_SCM = "scm";
     public static final String FIELD_IS_PRIVATE = "isPrivate";
 
     public static final String SCM_GIT = "git";
-    public static final String SCM_HG = "git";
+    public static final String SCM_HG = "hg";
 
     public static final String IS_PRIVATE_FALSE = "false";
     public static final String IS_PRIVATE_TRUE = "true";
@@ -28,12 +27,13 @@ public class CreateRepo extends BaseBatchOrgAction implements Action {
 
     @Override
     protected void performSingleAction(Map<String, String> params) throws IOException {
-        String author = getAuthor(params);
-        String repoId = params.get(FIELD_REPO_ID);
+        String author = ParamActionHelper.getAuthor(getConfig(), params);
+        String repoId = ParamActionHelper.getRepo(params);
         String scm = params.getOrDefault(FIELD_SCM, SCM_GIT);
         String isPrivate = params.getOrDefault(FIELD_IS_PRIVATE, IS_PRIVATE_TRUE);
 
-        System.out.format("%s: {repo: %s, scm: %s, isPrivate: %s}\n", ACTION_STRING, repoId, scm, isPrivate);
+        System.out.format("%s: {repo: %s, scm: %s, isPrivate: %s}\n",
+                ACTION_STRING, repoId, scm, isPrivate);
 
         OkHttpClient client = new OkHttpClient();
         Request request = ApiRequestCreator.requestCreateRepository(author, mCredential, repoId, scm, isPrivate);

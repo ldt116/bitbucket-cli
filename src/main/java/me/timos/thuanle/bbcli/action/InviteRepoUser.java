@@ -9,12 +9,8 @@ import okhttp3.Response;
 import java.io.IOException;
 import java.util.Map;
 
-public class InviteRepoUser extends BaseBatchOrgAction implements Action {
+public class InviteRepoUser extends BaseBatchAction implements Action {
     public static final String ACTION_STRING = "inviteRepoUser";
-
-    public static final String FIELD_REPO_ID = "repoId";
-    public static final String FIELD_EMAIL = "email";
-    public static final String FIELD_PERMISSION = "permission";
 
     public static final String PERMISSION_READ = "read";
     public static final String PERMISSION_WRITE = "write";
@@ -26,10 +22,10 @@ public class InviteRepoUser extends BaseBatchOrgAction implements Action {
 
     @Override
     protected void performSingleAction(Map<String, String> params) throws IOException {
-        String author = getAuthor(params);
-        String repoId = params.get(FIELD_REPO_ID);
-        String email = params.get(FIELD_EMAIL);
-        String permission = params.getOrDefault(FIELD_PERMISSION, PERMISSION_READ);
+        String author = ParamActionHelper.getAuthor(getConfig(), params);
+        String repoId = ParamActionHelper.getRepo(params);
+        String email = ParamActionHelper.getEmail(params);
+        String permission = ParamActionHelper.getPermission(params, PERMISSION_READ);
 
         System.out.format("%s: {repo: %s, email: %s, permission: %s, org: %s}\n",
                 ACTION_STRING, repoId, email, permission, author);
