@@ -17,9 +17,12 @@ public class ApiRequestCreator {
     private static final String BITBUCKET_API_1_BASE = "https://api.bitbucket.org/1.0/";
     private static final String BITBUCKET_API_1_BASE_INVITATIONS = BITBUCKET_API_1_BASE + "invitations/";
     private static final String BITBUCKET_API_1_BASE_PRIVILEGES = BITBUCKET_API_1_BASE + "privileges/";
+    private static final String BITBUCKET_API_1_BASE_REPOSITORIES = BITBUCKET_API_1_BASE + "repositories/";
 
     private static final String BITBUCKET_API_2_BASE = "https://api.bitbucket.org/2.0/";
     private static final String BITBUCKET_API_2_BASE_REPOSITORIES = BITBUCKET_API_2_BASE + "repositories/";
+
+    private static final String BITBUCKET_API_CREATE_ISSUE = BITBUCKET_API_1_BASE_REPOSITORIES + "%s/%s/issues";
 
     private static final String HEADER_AUTHORIZATION = "Authorization";
     private static final String SPLASH = "/";
@@ -49,13 +52,14 @@ public class ApiRequestCreator {
                 .build();
     }
 
-    static Request requestCreateRepository(String userLogin, String credential, String repoSlug, String scm, String isPrivate) {
+    static Request requestCreateRepository(String userLogin, String credential, String repoSlug, String scm, String isPrivate, String hasIssues) {
         String url = BITBUCKET_API_2_BASE_REPOSITORIES + userLogin + SPLASH + repoSlug;
 
         RequestBody body = new FormBody.Builder()
                 .add("scm", scm)
                 .add("name", repoSlug)
                 .add("is_private", isPrivate)
+                .add("has_issues", hasIssues)
                 .build();
 
         return buildPost(credential, url, body);
@@ -82,5 +86,28 @@ public class ApiRequestCreator {
 
         RequestBody body = RequestBody.create(MEDIA_TYPE_TEXT_PLAIN, permission);
         return buildPut(credential, url, body);
+    }
+
+    public static Request requestUpdateRepository(String credential, UpdateRepo.Param param) {
+        String url = BITBUCKET_API_2_BASE_REPOSITORIES + param.author + SPLASH + param.repoId;
+
+        RequestBody body = new FormBody.Builder()
+//                .add("has_issues", param.hasIssues)
+                .build();
+
+        return buildPut(credential, url, body);
+    }
+
+    public static Request requestCreateIssue(String credential, CreateIssue.Param param) {
+        String url = String.format(BITBUCKET_API_CREATE_ISSUE, param.author, param.repoId);
+
+        RequestBody body = new FormBody.Builder()
+                .add(CreateIssue.Param.FIELD_KIND, param.kind)
+                .add(CreateIssue.Param.FIELD_PRIORITY, param.priority)
+                .add(CreateIssue.Param.FIELD_TITLE, param.title)
+                .add(CreateIssue.Param.FIELD_CONTENT, param.content)
+                .build();
+
+        return buildPost(credential, url, body);
     }
 }

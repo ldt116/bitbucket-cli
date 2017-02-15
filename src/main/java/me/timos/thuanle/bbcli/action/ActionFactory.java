@@ -14,6 +14,10 @@ public class ActionFactory {
                 return new RemoveRepoUser(config);
             case UpdateRepoUserPermission.ACTION_STRING:
                 return new UpdateRepoUserPermission(config);
+            case UpdateRepo.ACTION_STRING:
+                return new UpdateRepo(config);
+            case CreateIssue.ACTION_STRING:
+                return new CreateIssue(config);
         }
         return null;
     }
